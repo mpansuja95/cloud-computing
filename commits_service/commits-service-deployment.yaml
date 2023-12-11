@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: commits-service-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: commits-service
+  template:
+    metadata:
+      labels:
+        app: commits-service
+    spec:
+      containers:
+      - name: commits-service-container
+        image: mpansuja/cloud-computing-images:commits.0.0.4
+        ports:
+        - containerPort: 8085
